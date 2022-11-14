@@ -1,0 +1,40 @@
+.container{
+  width: 1180px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  height: auto;
+  .schedule{
+    margin-bottom: 100px;
+    .list_schedule{
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      .item_schedule{
+        .linkActive{
+          border: none;
+          border-bottom: 1px solid #d4dd29;
+          padding-bottom: 3px;
+          text-decoration: none;
+          font-size: 24px;
+          text-transform: uppercase;
+          color: #d4dd29;
+          background: none;
+        }
+        .link_schedule{
+          border: none;
+          text-decoration: none;
+          font-size: 24px;
+          text-transform: uppercase;
+          color: white;
+          background: none;
+        }
+        .line{
+          font-size: 20px;
+          color: white;
+        }
+      }
+    }
+  }
+}

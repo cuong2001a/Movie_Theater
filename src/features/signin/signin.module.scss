@@ -1,0 +1,96 @@
+.container{
+  width: 1180px;
+  margin: 0 auto;
+  padding-block: 50px;
+  height: auto;
+  .signin{
+    display: grid;
+    grid-template-columns: auto auto;
+    .left{
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: rgb(0 0 0 / 13%) 2px 2px 4px;
+      padding: 30px;
+      background: rgb(28, 38, 47);
+      border-radius: 10px;
+      margin: 0px 20px 20px;
+      .title{
+      text-align: center;
+      color: rgb(212, 221, 41);
+      font-size: 24px;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-block-start: 0;
+      }
+      .item_input{
+        margin-bottom: 15px;
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        .label{
+        width: 180px;
+        color: rgb(166, 178, 201);
+        margin-right: 10px;
+        font-size: 14px;
+      }
+        input{
+          width: 100%;
+          padding: 0px 15px;
+          font-size: 15px;
+          color: rgb(166, 178, 201);
+          line-height: 36px;
+          border: none;
+          outline: none;
+          background: rgb(39, 50, 69);
+          border-radius: 4px;
+        }
+      }
+      .btn{
+        text-align: center;
+        .btn_submit{
+          background-color: rgb(39, 223, 45);
+          font-size: 16px;
+          color: white;
+          padding: 10px 5px;
+          width: 30%;
+          border-radius: 10px;
+          border: none;
+          &:hover{
+            background-color: rgb(35, 186, 40);
+          }
+        }
+        .btn_register{
+          background-color: rgb(57, 110, 233);
+          font-size: 16px;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 10px;
+          border: none;
+          text-decoration: none;
+          margin-inline-start: 30px;
+          &:hover{
+            background-color: rgb(37, 88, 154);
+          }
+        }
+        .link{
+          margin-inline-start: 30px;
+          text-decoration: none;
+          color: rgb(166, 178, 201);
+          &:hover{
+            color: rgb(39, 223, 45);
+          }
+        }
+      }
+    }
+    .right{
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      .item .item_img{
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
