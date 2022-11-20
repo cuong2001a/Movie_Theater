@@ -1,21 +1,21 @@
-import React from "react"
-import classes from "./style.module.scss"
-import {IoLocationSharp} from "react-icons/io5"
-import {itemTheater, listTheater} from "../constant"
+import React from "react";
+import classes from "./style.module.scss";
+import { IoLocationSharp } from "react-icons/io5";
+import { itemTheater, listTheater } from "../constant";
 const ListTheater: React.FC = () => {
-  const city = ["Thành phố Hồ Chí Minh", "Hà Nội", "Hải Phòng", "Huế"]
+  const city = ["Thành phố Hồ Chí Minh", "Hà Nội", "Hải Phòng", "Huế"];
   return (
     <React.Fragment>
       <ul className={classes.list_city}>
         {city?.map((item: string, index: number) => {
           return (
             <li key={index} className={classes.item}>
-              <a href="#" className={classes.item_link}>
+              <a href="#!" className={classes.item_link}>
                 <IoLocationSharp />
                 <span>{item}</span>
               </a>
             </li>
-          )
+          );
         })}
       </ul>
       <div className={classes.list_theater}>
@@ -31,11 +31,11 @@ const ListTheater: React.FC = () => {
                 <span>Xem</span>
               </a>
             </div>
-          )
+          );
         })}
       </div>
     </React.Fragment>
-  )
-}
-ListTheater.propTypes = {}
-export default ListTheater
+  );
+};
+ListTheater.propTypes = {};
+export default ListTheater;

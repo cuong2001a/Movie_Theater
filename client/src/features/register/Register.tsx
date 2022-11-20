@@ -1,10 +1,11 @@
-import React from "react"
-import Slider from "react-slick"
-import Footer from "../../components/footer/Footer"
-import Header from "../../components/header/Header"
-import Next from "./component/next/Next"
-import Prev from "./component/prev/Prev"
-import classes from "./register.module.scss"
+import React from "react";
+import Slider from "react-slick";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Next from "./component/next/Next";
+import Prev from "./component/prev/Prev";
+import classes from "./register.module.scss";
+
 const Register: React.FC = () => {
   const settings = {
     dots: true,
@@ -14,7 +15,7 @@ const Register: React.FC = () => {
     slidesToScroll: 1,
     nextArrow: <Next />,
     prevArrow: <Prev />,
-  }
+  };
   return (
     <React.Fragment>
       <Header />
@@ -79,7 +80,7 @@ const Register: React.FC = () => {
       </div>
       <Footer />
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

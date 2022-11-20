@@ -1,26 +1,26 @@
-import {ReactElement} from "react"
-import About from "../features/about/About"
-import Home from "../features/home/Home"
-import Register from "../features/register/Register"
-import Search from "../features/search/Search"
-import SignIn from "../features/signin/SignIn"
-import SystemCinema from "../features/system/SystemCinema"
+import { ReactElement } from "react";
+import About from "../features/about/About";
+import Home from "../features/home/Home";
+import Register from "../features/register/Register";
+import Search from "../features/search/Search";
+import SignIn from "../features/signin/SignIn";
+import SystemCinema from "../features/system/SystemCinema";
 
 export interface itemRoute {
-  path: string
-  element: React.ReactNode
+  path: string;
+  element: React.ReactNode;
 }
 
 export interface itemCategory {
-  text: string
-  path: string
-  id: number
+  text: string;
+  path: string;
+  id: number;
 }
 
 export interface Theater_Item {
-  img: string
-  tilte: string
-  like: number
+  img: string;
+  tilte: string;
+  like: number;
 }
 
 export const listRoute: itemRoute[] = [
@@ -48,7 +48,7 @@ export const listRoute: itemRoute[] = [
     path: "/register",
     element: <Register />,
   },
-]
+];
 
 export const listCategory: itemCategory[] = [
   {
@@ -71,7 +71,7 @@ export const listCategory: itemCategory[] = [
     path: "/search",
     id: 4,
   },
-]
+];
 
 export const listTheater: Theater_Item[] = [
   {
@@ -109,21 +109,21 @@ export const listTheater: Theater_Item[] = [
     tilte: "BHD STAR QUANG TRUNG",
     like: 100,
   },
-]
+];
 export interface settingSlick {
-  dots: boolean
-  infinite: boolean
-  speed: number
-  slidesToShow: number
-  slidesToScroll: number
-  initialSlide: number
+  dots: boolean;
+  infinite: boolean;
+  speed: number;
+  slidesToShow: number;
+  slidesToScroll: number;
+  initialSlide: number;
 }
 
 export interface settingSlickMovie {
-  infinite: boolean
-  speed: number
-  slidesToShow: number
-  slidesToScroll: number
-  nextArrow: ReactElement
-  prevArrow: ReactElement
+  infinite: boolean;
+  speed: number;
+  slidesToShow: number;
+  slidesToScroll: number;
+  nextArrow: ReactElement;
+  prevArrow: ReactElement;
 }

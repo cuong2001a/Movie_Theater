@@ -1,12 +1,12 @@
-import React, {ReactElement, useState} from "react"
-import classes from "../home.module.scss"
-import Slider from "react-slick"
-import {GrPrevious, GrNext} from "react-icons/gr"
-import {Link} from "react-router-dom"
-import {settingSlickMovie} from "../../../constant"
+import React, { ReactElement, useState } from "react";
+import classes from "../home.module.scss";
+import Slider from "react-slick";
+import { GrPrevious, GrNext } from "react-icons/gr";
+import { Link } from "react-router-dom";
+import { settingSlickMovie } from "../../../constant";
 
 const CurrentMovie = () => {
-  const [isHover, setIsHover] = useState<Boolean>(false)
+  const [isHover, setIsHover] = useState<Boolean>(false);
   const setting: settingSlickMovie = {
     infinite: true,
     speed: 500,
@@ -14,13 +14,17 @@ const CurrentMovie = () => {
     slidesToScroll: 3,
     nextArrow: <GrNext />,
     prevArrow: <GrPrevious />,
-  }
+  };
   return (
     <React.Fragment>
       <div className={classes.currentMovie}>
         <span className={classes.title}>-- Phim hiện đang chiếu --</span>
         <Slider {...setting}>
-          <div className={classes.item} onMouseOver={() => setIsHover(true)} onMouseOut={() => setIsHover(false)}>
+          <div
+            className={classes.item}
+            onMouseOver={() => setIsHover(true)}
+            onMouseOut={() => setIsHover(false)}
+          >
             <img
               src="https://res.cloudinary.com/cgv-vi-t-nam/image/upload/v1640168025/poster_movie/xxlsvvjzr5bn7zza5xy6.jpg"
               alt=""
@@ -62,7 +66,7 @@ const CurrentMovie = () => {
         </Slider>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default CurrentMovie
+export default CurrentMovie;

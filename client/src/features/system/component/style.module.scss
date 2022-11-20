@@ -1,12 +1,12 @@
-.list_city{
+.list_city {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: start;
   gap: 15px;
   padding: 15px 0 35px 0;
-  .item{
-    a{
+  .item {
+    a {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -22,10 +22,10 @@
       transition: 0.4s ease all;
       -moz-transition: 0.4s ease all;
       -webkit-transition: 0.4s ease all;
-      &:hover{
+      &:hover {
         background: #42af33;
       }
-      span{
+      span {
         color: white;
         font-size: 14px;
         text-transform: uppercase;
@@ -34,27 +34,27 @@
     }
   }
 }
-.list_theater{
+.list_theater {
   display: grid;
   grid-template-columns: auto auto auto auto;
   column-gap: 10px;
   row-gap: 20px;
-  .item_theater{
+  .item_theater {
     background-color: #151f28;
     display: inline-block;
     width: 100%;
-    &:hover{
-      .btn_location{
+    &:hover {
+      .btn_location {
         background: #42af33;
-        transition: 0.5 ease all ;
+        transition: 0.5 ease all;
       }
     }
-    .inside{
+    .inside {
       text-align: left;
       text-decoration: none;
-      padding:11px 11px;
+      padding: 11px 11px;
       display: block;
-      h3{
+      h3 {
         font-size: 14px;
         font-weight: 500;
         text-transform: capitalize;
@@ -62,13 +62,13 @@
         margin-top: 0;
         margin-bottom: 40px;
       }
-      p{
+      p {
         color: #90a0ba;
         font-size: 12px;
         font-weight: bold;
       }
     }
-    .btn_location{
+    .btn_location {
       display: flex;
       align-items: center;
       justify-content: center;
