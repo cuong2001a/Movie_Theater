@@ -1,23 +1,23 @@
-.currentMovie{
+.currentMovie {
   width: 1180px;
   margin: 0 auto;
   padding-block: 50px;
   height: auto;
-  .title{
+  .title {
     font-size: 25px;
     font-weight: 600;
     color: rgb(39, 223, 45);
     filter: brightness(1.2);
   }
-  .item{
+  .item {
     width: 220px !important;
     margin: 20px 10px;
     height: 300px;
     position: relative;
-    img{
+    img {
       width: 100%;
     }
-    .info{
+    .info {
       display: flex;
       justify-content: start;
       flex-direction: column;
@@ -29,7 +29,7 @@
       backdrop-filter: blur(15px);
       transition: bottom 0.3s ease 0.5s;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      .info__title{
+      .info__title {
         color: rgb(39, 223, 45);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -38,7 +38,7 @@
         text-align: center;
         margin-top: 0;
       }
-      .info__time{
+      .info__time {
         color: rgb(39, 223, 45);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -48,7 +48,7 @@
         margin-top: 0;
       }
     }
-    .info_hover{
+    .info_hover {
       display: flex;
       justify-content: start;
       flex-direction: column;
@@ -61,7 +61,7 @@
       transition: bottom 0.3s ease 0.5s;
       transition-delay: 0s;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      .info__title{
+      .info__title {
         color: rgb(39, 223, 45);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -70,7 +70,7 @@
         text-align: center;
         margin-top: 0;
       }
-      .info__time{
+      .info__time {
         color: rgb(39, 223, 45);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -80,14 +80,14 @@
         margin-top: 0;
       }
     }
-    
-    .order{
+
+    .order {
       width: 100%;
       display: flex;
       z-index: 10;
       bottom: -11px;
       position: absolute;
-      .link{
+      .link {
         margin: 0px;
         width: 100%;
         color: rgb(86, 255, 26);
@@ -100,21 +100,20 @@
         text-align: center;
       }
     }
-
   }
 }
-.slick_news{
+.slick_news {
   width: 100%;
   height: 700px;
-  .block{
+  .block {
     display: block;
-    img{
+    img {
       width: 100%;
       height: 100%;
       object-fit: fill;
     }
   }
-  .none{
+  .none {
     display: none;
   }
 }

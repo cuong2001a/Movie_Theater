@@ -1,16 +1,16 @@
-import React from "react"
-import {useForm, SubmitHandler} from "react-hook-form"
-import {Link} from "react-router-dom"
-import Slider from "react-slick"
-import Footer from "../../components/footer/Footer"
-import Header from "../../components/header/Header"
-import Next from "../register/component/next/Next"
-import Prev from "../register/component/prev/Prev"
-import classes from "./signin.module.scss"
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Next from "../register/component/next/Next";
+import Prev from "../register/component/prev/Prev";
+import classes from "./signin.module.scss";
 type FormValues = {
-  username: string
-  password: string
-}
+  username: string;
+  password: string;
+};
 const settings = {
   dots: true,
   infinite: true,
@@ -19,10 +19,10 @@ const settings = {
   slidesToScroll: 1,
   nextArrow: <Next />,
   prevArrow: <Prev />,
-}
+};
 const SignIn: React.FC = () => {
-  const {register, handleSubmit} = useForm<FormValues>()
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data)
+  const { register, handleSubmit } = useForm<FormValues>();
+  const onSubmit: SubmitHandler<FormValues> = data => console.log(data);
   return (
     <React.Fragment>
       <Header />
@@ -82,7 +82,7 @@ const SignIn: React.FC = () => {
 
       <Footer />
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
