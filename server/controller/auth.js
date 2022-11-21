@@ -14,7 +14,7 @@ const loginUser = async (req, res) => {
 
     // create a token
     const token = createToken(user._id)
-
+    res.cookie('t', token, { expire: new Date()+ 9999})
     res.status(200).json({email, token})
   } catch (error) {
     res.status(400).json({error: error.message})
@@ -23,19 +23,26 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signUpUser = async (req, res) =>{
-  const {email, password} = req.body
-  
+  const received = req.body
   try {
-    const user = await User.signup(email, password)
+    const user = await User.signup(received)
     
     //create a token
     const token = createToken(user._id)
-    res.status(200).json({ email, token})
+    res.status(200).json({ message:"Register Success", token})
   } catch (error) {
     res.status(400).json({ error: error.message})
   }
   res.json({
     message: 'signup user'
+  })
+}
+
+export const logout = async (req, res) => {
+  res.clearCookie('t');
+  //  res.redirect('/signin');
+  res.json({
+      message: "Signout Success"
   })
 }
 
