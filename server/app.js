@@ -3,11 +3,15 @@ import dotenv from 'dotenv'
 import mongoose from "mongoose"
 import cors from 'cors'
 
+const authRoutes = require('./routes/auth');
+// const userRoutes = require('./routes/user');
 const app = express();
 dotenv.config();
 
 app.use(express.json())
 app.use(cors({ credentials: 'same origin'}));
+app.use('/api', authRoutes)
+// app.use('/api',userRoutes)
 
 // connection
 mongoose.connect(process.env.MONGO_URL, {

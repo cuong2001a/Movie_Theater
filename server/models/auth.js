@@ -1,70 +1,88 @@
-import mongoose from "mongoose";
-import crypto from 'crypto'
-const {ObjectId} = mongoose.Schema
-import {v4 as uuidv4} from 'uuid'
-import { set } from "lodash";
-const User = new mongoose.Schema({
-    name:{
-      type: String,
-      trim: true,
-      required: true,
-      maxLength: 50
-    },
-    email:{
-      type:String,
-      trim: true,
-      required: true,
-      unique: true
-    },
-    password: {
-      type: String,
-      required: true
-    },
-    phone: {
-      type: String,
-      maxLength:10,
-    },
-    address: {
-      type: String,
-      maxLength: 255,
-    },
-    role:{
-      type: Number,
-      default: 0
-    },
-    birthday: {
-      type: String,
-    }, 
-    hashed_password: {
-      type: String,
-      required: true
-    },
-    salt: {
-      type: String
-    }
-}, {timestamps: true})
+const mongoose  = require('mongoose')
+const bcrypt = require('bcrypt')
+const validator = require('validator')
+const Schema = mongoose.Schema
 
-User.virtual("password")
-.set(function(password){
-console.log('password :', password);
-this.salt = uuidv4()
-this.hashed_password = this.en
+const userSchema = new Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  birthday: {
+    type: String
+  },
+  phone: {
+    type:String,
+    maxLength:10
+  },
+  name: {
+    type: String,
+    maxLength: 50
+  },
+  address:{
+    type: String,
+    maxLength:255,
+  },
+  role:{
+    type:Number,
+    default: 0
+  }
 })
 
-User.method = {
-  authenticate: function(plainText){
-    return this.encrytPassword(plainText) === this.hashed_password;
-  },
-  encrytPassword: function (password) {
-    console.log('password :', password);
-    if(!password) return '';
-    try {
-      return crypto.createHmac('sha1', this.salt)
-            .update(password)
-            .digest('hex')
-    } catch (error) {
-      return '';
-    }
+// static signup method
+
+userSchema.statics.signup = async function(email, password) {
+
+  const exists = await this.findOne({ email })
+
+  //validation
+  if(!email || !password) {
+    throw Error('All fields must be filled')
   }
+  
+  if (!validator.isEmail(email)){
+    throw Error('Email is not valid')
+  }
+
+  if (!validator.isStrongPassword(password)) {
+    throw Error('Password not strong enough')
+  }
+  if (exists) {
+    throw Error('Email already in use')
+  }
+  
+  const salt = await bcrypt.genSalt(10)
+  const hash = await bcrypt.hash(password, salt)
+
+  const user = await this.create({ email, password: hash })
+
+  return user
 }
-module.exports = mongoose.model("User", User)
+
+// static login method
+userSchema.statics.login = async function(email, password) {
+  
+  if(!email || !password) {
+    throw Error('All fields must be filled')
+  }
+
+  const user  = await this.findOne({ email })
+  if (!user) {
+    throw Error('Incorrect email')
+  }
+
+  const match = await bcrypt.compare(password, user.password)
+
+  if (!match){
+    throw Error('Incorrect password')
+  }
+
+  return user
+}
+
+module.exports = mongoose.model('User', userSchema)
