@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const Next = (props: any) => {
   const styles = {
@@ -11,9 +11,15 @@ const Next = (props: any) => {
     right: "3px",
     zIndex: 100,
     textAlign: "end",
-  }
-  const {className, style, onClick} = props
-  return <div className={className} style={{...style, ...styles}} onClick={onClick} />
-}
+  };
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, ...styles }}
+      onClick={onClick}
+    />
+  );
+};
 
-export default Next
+export default Next;

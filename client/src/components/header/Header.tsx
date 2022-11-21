@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react"
-import {Link, NavLink, useLocation} from "react-router-dom"
-import {itemCategory, listCategory} from "../../constant"
-import classes from "./header.module.scss"
+import React, { useEffect, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+import { itemCategory, listCategory } from "../../constant";
+import classes from "./header.module.scss";
 const Header: React.FC = () => {
-  const [activeMenu, setActiveMenu] = useState<string>("/")
-  const {pathname} = useLocation()
+  const [activeMenu, setActiveMenu] = useState<string>("/");
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    setActiveMenu(pathname)
-  }, [])
+    setActiveMenu(pathname);
+  }, []);
 
   return (
     <React.Fragment>
@@ -24,15 +24,23 @@ const Header: React.FC = () => {
           <ul className={classes.nav}>
             {listCategory?.map((item: itemCategory, index: number) => {
               return (
-                <li onClick={() => setActiveMenu(item.path)} className={classes.nav__item} key={item.id}>
+                <li
+                  onClick={() => setActiveMenu(item.path)}
+                  className={classes.nav__item}
+                  key={item.id}
+                >
                   <NavLink
-                    className={activeMenu === item.path ? classes.nav__linkActive : classes.nav__link}
+                    className={
+                      activeMenu === item.path
+                        ? classes.nav__linkActive
+                        : classes.nav__link
+                    }
                     to={item.path}
                   >
                     {item.text}
                   </NavLink>
                 </li>
-              )
+              );
             })}
           </ul>
           <Link to="/signin" className={classes.btn__signIn}>
@@ -41,7 +49,7 @@ const Header: React.FC = () => {
         </nav>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

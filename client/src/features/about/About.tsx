@@ -1,7 +1,7 @@
-import React from "react"
-import Header from "../../components/header/Header"
-import {listTheater, Theater_Item} from "../../constant"
-import classes from "./about.module.scss"
+import React from "react";
+import Header from "../../components/header/Header";
+import { listTheater, Theater_Item } from "../../constant";
+import classes from "./about.module.scss";
 
 const About: React.FC = () => {
   return (
@@ -18,18 +18,18 @@ const About: React.FC = () => {
                   <p className={classes.name_theater}>{item.tilte}</p>
                   <div className={classes.item_bottom}>
                     <span className={classes.like}>{item.like} Thích</span>
-                    <a href="#" className={classes.btn_share}>
+                    <a href="#!" className={classes.btn_share}>
                       Chia sẻ
                     </a>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default About
+export default About;

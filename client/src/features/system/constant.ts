@@ -1,7 +1,7 @@
 export interface itemTheater {
-  url: string
-  address: string
-  title: string
+  url: string;
+  address: string;
+  title: string;
 }
 
 export const listTheater: itemTheater[] = [
@@ -30,4 +30,4 @@ export const listTheater: itemTheater[] = [
     address: "a",
     title: "a",
   },
-]
+];

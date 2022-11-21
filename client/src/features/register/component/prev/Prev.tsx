@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 const Prev: React.FC = (props: any) => {
   const styles = {
@@ -10,9 +10,15 @@ const Prev: React.FC = (props: any) => {
     top: "70%",
     left: "3px",
     zIndex: 100,
-  }
-  const {className, style, onClick} = props
-  return <div className={className} style={{...style, ...styles}} onClick={onClick} />
-}
+  };
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, ...styles }}
+      onClick={onClick}
+    />
+  );
+};
 
-export default Prev
+export default Prev;

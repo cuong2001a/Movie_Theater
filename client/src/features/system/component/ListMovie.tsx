@@ -1,7 +1,7 @@
-import React from "react"
+import React from "react";
 
 const ListMovie = () => {
-  return <React.Fragment>ListMovie</React.Fragment>
-}
+  return <React.Fragment>ListMovie</React.Fragment>;
+};
 
-export default ListMovie
+export default ListMovie;

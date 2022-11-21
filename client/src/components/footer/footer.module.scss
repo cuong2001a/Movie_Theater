@@ -1,14 +1,14 @@
-footer{
+footer {
   width: 990px;
   margin: 0 auto;
-  .footer_element{
+  .footer_element {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    .item ul{
+    .item ul {
       list-style-type: none;
       padding: 0;
-      li{
-        .item_title{
+      li {
+        .item_title {
           color: rgba(255, 255, 255, 0.7);
           font-size: 18px;
           line-height: 1;
@@ -16,7 +16,7 @@ footer{
           text-transform: uppercase;
           margin: 0px 0px 25px;
           padding-left: 16px;
-          &::before{
+          &::before {
             background-color: rgb(212, 221, 41);
             content: "";
             height: 22px;
@@ -26,40 +26,40 @@ footer{
             width: 4px;
           }
         }
-        .item_content{
-          .item_text{
+        .item_content {
+          .item_text {
             display: flex;
             align-items: baseline;
             color: white;
             font-size: 13px;
             text-transform: uppercase;
-            padding-bottom: 7px ;
+            padding-bottom: 7px;
             margin-bottom: 7px;
-            span{
+            span {
               margin-inline-start: 3px;
               max-width: 200px;
             }
           }
         }
-        .item_logo{
+        .item_logo {
           display: flex;
           align-items: center;
-          li{
+          li {
             margin-inline: 10px;
             font-size: 30px;
           }
         }
-        img{
+        img {
           width: 180px;
           height: 130px;
           object-fit: contain;
         }
       }
-      li.contact{
+      li.contact {
         color: rgb(160 163 167);
         max-width: 200px;
         font-size: 13px;
       }
     }
-  } 
+  }
 }
