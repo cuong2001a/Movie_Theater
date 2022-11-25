@@ -46,4 +46,4 @@ export const logout = async (req, res) => {
   })
 }
 
-module.exports = { signUpUser, loginUser}
+module.exports = { signUpUser, loginUser, logout}

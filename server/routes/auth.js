@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller Function
-const {loginUser, signUpUser} = require('../controller/auth')
+const {loginUser, signUpUser, logout} = require('../controller/auth')
 const router = express.Router();
 
 // sign up route
