@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
+import Footer from "../../components/layouts/footer/Footer";
+import Header from "../../components/layouts/header/Header";
 import ListMovie from "./component/ListMovie";
 import ListTheater from "./component/ListTheater";
 import classes from "./movieSchedule.module.scss";

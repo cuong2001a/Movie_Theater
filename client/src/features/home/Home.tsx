@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Header from "../../components/header/Header";
+import Header from "../../components/layouts/header/Header";
 import CurrentMovie from "./components/CurrentMovie";
 import CommingMovie from "./components/CommingMovie";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/layouts/footer/Footer";
 import classes from "./home.module.scss";
 const Home: React.FC = () => {
   const images = [

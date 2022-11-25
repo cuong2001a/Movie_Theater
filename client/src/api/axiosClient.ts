@@ -1,3 +1,4 @@
+// @ts-nocheck
 import axios from "axios";
 import queryString from "query-string";
 import { getRefreshToken, getToken } from "./Cookie";
@@ -9,8 +10,12 @@ const axiosClient = axios.create({
   headers: {
     "content-type": "application/json",
   },
-  paramsSerializer: params =>
-    queryString.stringify(params, { skipNull: true, skipEmptyString: true }),
+  paramsSerializer: params => {
+    return queryString.stringify(params, {
+      skipNull: true,
+      skipEmptyString: true,
+    });
+  },
 });
 
 // Interceptors

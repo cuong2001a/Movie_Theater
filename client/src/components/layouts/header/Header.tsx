@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { itemCategory, listCategory } from "../../constant";
+import { LIST_CATEGORIES } from "../../../constant";
+import { ItemCategory } from "../../../constant/models";
 import classes from "./header.module.scss";
 const Header: React.FC = () => {
   const [activeMenu, setActiveMenu] = useState<string>("/");
@@ -22,7 +23,7 @@ const Header: React.FC = () => {
             />
           </Link>
           <ul className={classes.nav}>
-            {listCategory?.map((item: itemCategory, index: number) => {
+            {LIST_CATEGORIES?.map((item: ItemCategory, index: number) => {
               return (
                 <li
                   onClick={() => setActiveMenu(item.path)}
