@@ -1,9 +1,7 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import Footer from "../../components/layouts/footer/Footer";
-import Header from "../../components/layouts/header/Header";
 import Next from "../register/component/next/Next";
 import Prev from "../register/component/prev/Prev";
 import classes from "./signin.module.scss";
@@ -25,7 +23,6 @@ const SignIn: React.FC = () => {
   const onSubmit: SubmitHandler<FormValues> = data => console.log(data);
   return (
     <React.Fragment>
-      <Header />
       <div className={classes.container}>
         <div className={classes.signin}>
           <div className={classes.left}>
@@ -79,8 +76,6 @@ const SignIn: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </React.Fragment>
   );
 };

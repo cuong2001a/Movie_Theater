@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/layouts/header/Header";
 import { LIST_THREATER } from "../../constant";
 import { Theater_Item } from "../../constant/models";
 import classes from "./about.module.scss";
@@ -7,7 +6,6 @@ import classes from "./about.module.scss";
 const About: React.FC = () => {
   return (
     <React.Fragment>
-      <Header />
       <div className={classes.container}>
         <div className={classes.theater_system}>
           <h3 className={classes.title}>Hệ thống rạp</h3>

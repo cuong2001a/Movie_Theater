@@ -93,3 +93,10 @@ export const LIST_THREATER: Theater_Item[] = [
     like: 100,
   },
 ];
+
+export const LIST_IMAGES: string[] = [
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/1b8d77de1bf9dea787e8.jpg",
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/kết-TVC_update.png",
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/KV-Artwork-allfooter-1920-1.jpg",
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/1920x1080-Popcorn.jpg",
+];
