@@ -2,13 +2,13 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { AuthApi } from "../../api";
+import { AuthFormValues } from "../../models";
 import Next from "../register/component/next/Next";
 import Prev from "../register/component/prev/Prev";
 import classes from "./signin.module.scss";
-type FormValues = {
-  username: string;
-  password: string;
-};
+import { toast, ToastContainer } from "react-toastify";
+
 const settings = {
   dots: true,
   infinite: true,
@@ -18,9 +18,19 @@ const settings = {
   nextArrow: <Next />,
   prevArrow: <Prev />,
 };
+
 const SignIn: React.FC = () => {
-  const { register, handleSubmit } = useForm<FormValues>();
-  const onSubmit: SubmitHandler<FormValues> = data => console.log(data);
+  const { register, handleSubmit } = useForm<AuthFormValues>();
+  const onSubmit: SubmitHandler<AuthFormValues> = async values => {
+    try {
+      await AuthApi.login(values);
+      toast.success("Login successfully");
+    } catch (error: any) {
+      const errorDetail = error?.response?.data;
+      toast.error(errorDetail?.error || "Login failed");
+    }
+  };
+
   return (
     <React.Fragment>
       <div className={classes.container}>
@@ -30,11 +40,11 @@ const SignIn: React.FC = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className={classes.item_input}>
                 <label className={classes.label}>Email :</label>
-                <input type="text" />
+                <input {...register("email")} />
               </div>
               <div className={classes.item_input}>
                 <label className={classes.label}>Password :</label>
-                <input type="password" />
+                <input {...register("password")} type="password" />
               </div>
               <div className={classes.btn}>
                 <button className={classes.btn_submit} type="submit">
@@ -76,6 +86,7 @@ const SignIn: React.FC = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </React.Fragment>
   );
 };
