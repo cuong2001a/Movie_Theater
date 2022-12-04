@@ -3,26 +3,29 @@ const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 const bcrypt = require('bcrypt');
 // login user
- const loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   const {email, password} = req.body
 
   try {
     const user = await User.login(email, password)
 
     // create a token
-    const accessToken = jwt.sign(user._id, process.env.ACCESS_TOKEN)
-    const refreshToken = jwt.sign(user._id, process.env.REFRESH_TOKEN)
+    const accessToken = await jwt.sign(user.email, process.env.ACCESS_TOKEN)
+    console.log('accessToken :', accessToken);
+    const refreshToken = await jwt.sign(user.email, process.env.REFRESH_TOKEN)
+    console.log('refreshToken :', refreshToken);
 
     res.cookie('accessToken', accessToken, { expire: new Date()+ 9999})
     res.cookie('refreshToken', refreshToken)
-    res.status(200).json({email, token})
+    res.status(200).json({email})
   } catch (error) {
+  console.log('error :', error);
     res.status(400).json({error: error.message})
   }
 } 
 
 // signup user
- const signUpUser = async (req, res) =>{
+export const signUpUser = async (req, res) =>{
   const received = req.body
   try {
     const user = await User.signup(received)
@@ -35,14 +38,14 @@ const bcrypt = require('bcrypt');
   })
 }
 
- const logout = (req, res) => {
+export const logout = (req, res) => {
   res.clearCookie();
   res.json({
       message: "Signout Success"
   })
 }
 
- const refreshToken = (req, res) => {
+export const refreshToken = (req, res) => {
   const refresh = req.body.token
   if(!refresh){
     res.status(400).json({message: 'refresh khong hop le'})
@@ -55,9 +58,10 @@ const bcrypt = require('bcrypt');
   }
 }
 
-const forgotPassword = async(req,res) => {
+export const forgotPassword = async(req,res) => {
     const {email} = req.body
     User.findOne({email: email}).then(data => {
+    console.log('data :', data);
       if(!data){
         res.status(200).json({
           message: "Email not found"
@@ -87,6 +91,7 @@ const forgotPassword = async(req,res) => {
         }
         transposter.sendMail(mailOptions, function(err, info){
           if(err){
+          console.log('err :', err);
             res.status(400).json({message: err})
           }else{
             console.log("Message.sent "+ info.response);
@@ -99,7 +104,7 @@ const forgotPassword = async(req,res) => {
     })
 }
 
-const resetFwPassword = async(req,res)=>{
+export const resetFwPassword = async(req,res)=>{
   try {
     const data = await User.findById(req.params.id)
     const resetPassword = req.body.resetPassword
@@ -107,7 +112,7 @@ const resetFwPassword = async(req,res)=>{
       return res.status(400).json({ message: "da het han token. Vui long thuc hien lai :))"})
     }else{
       const salt = await bcrypt.genSalt(10)
-      const hash = await bcrypt.hash(password, salt)
+      const hash = await bcrypt.hash(resetPassword, salt)
       const result = await User.updateOne({email: data.email},{password: hash})
       console.log('result :', result);
     }
@@ -118,4 +123,3 @@ const resetFwPassword = async(req,res)=>{
     })
   }
 }
-module.exports = { signUpUser, loginUser, logout, refreshToken, forgotPassword, resetFwPassword}
