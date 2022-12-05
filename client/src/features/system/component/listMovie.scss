@@ -1,0 +1,13 @@
+.mySwiper {
+  & .threater_item {
+    background-size: "cover";
+    background-position: "center";
+    background-repeat: "none";
+    background-clip: content-box;
+
+    &_wrapper {
+      min-height: 300px;
+      width: 100%;
+    }
+  }
+}
