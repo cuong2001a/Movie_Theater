@@ -4,6 +4,9 @@ import Next from "./component/next/Next";
 import Prev from "./component/prev/Prev";
 import classes from "./register.module.scss";
 import { useFormik } from "formik";
+import { IRegisterForm } from "../../models";
+import { AuthApi } from "../../api";
+import { toast } from "react-toastify";
 
 const Register: React.FC = () => {
   const settings = {
@@ -15,6 +18,20 @@ const Register: React.FC = () => {
     nextArrow: <Next />,
     prevArrow: <Prev />,
   };
+
+  const handleSubmitForm = async (values: IRegisterForm) => {
+    try {
+      await AuthApi.register({
+        email: values?.email,
+        password: values?.password,
+      });
+      toast.success("Signup successfully");
+    } catch (error) {
+      console.log("Debug_here error: ", error);
+      toast.error("Signup failed");
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -23,9 +40,7 @@ const Register: React.FC = () => {
       rePassword: "",
       phone: "",
     },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: handleSubmitForm,
   });
 
   return (
