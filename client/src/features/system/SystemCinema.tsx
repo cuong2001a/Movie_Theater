@@ -3,7 +3,8 @@ import ListMovie from "./component/ListMovie";
 import ListTheater from "./component/ListTheater";
 import classes from "./movieSchedule.module.scss";
 const SystemCinema: React.FC = () => {
-  const [active, setActive] = useState<Number>(1);
+  const [active, setActive] = useState<number>(1);
+
   return (
     <React.Fragment>
       <div className={classes.container}>
@@ -16,12 +17,10 @@ const SystemCinema: React.FC = () => {
                   active === 1 ? classes.linkActive : classes.link_schedule
                 }
               >
-                Lịch chiếu theo rạp
+                Lịch chiếu theo phim
               </button>
             </li>
-            <li className={classes.item_schedule}>
-              <span className={classes.line}>|</span>
-            </li>
+            <span className={classes.line}>|</span>
             <li className={classes.item_schedule}>
               <button
                 onClick={() => setActive(2)}
@@ -29,12 +28,12 @@ const SystemCinema: React.FC = () => {
                   active === 2 ? classes.linkActive : classes.link_schedule
                 }
               >
-                Lịch chiếu theo phim
+                Lịch chiếu theo rạp
               </button>
             </li>
           </ul>
           <div className={classes.render}>
-            {active === 1 ? <ListTheater /> : <ListMovie />}
+            {active === 1 ? <ListMovie /> : <ListTheater />}
           </div>
         </div>
       </div>

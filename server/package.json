@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./app.js --exec babel-node -e js"
+    "start": "nodemon ./app.js --exec babel-node -e js",
+    "lintfix": "eslint src --fix --cache"
   },
   "keywords": [],
   "author": "",
@@ -26,5 +27,11 @@
     "nodemon": "^2.0.20",
     "uuid": "^9.0.0",
     "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.0"
   }
 }

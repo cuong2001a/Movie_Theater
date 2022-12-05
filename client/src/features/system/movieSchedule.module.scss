@@ -1,11 +1,11 @@
 .container {
-  width: 1180px;
+  width: "100%";
   margin: 0 auto;
-  padding-top: 50px;
-  padding-bottom: 20px;
-  height: auto;
+  background-image: url("../../assets/images/movie-details-bg.jpg");
+  background-position: "cover";
   .schedule {
     margin-bottom: 100px;
+    padding: 2rem 16rem 8rem;
     .list_schedule {
       list-style-type: none;
       display: flex;
@@ -21,8 +21,10 @@
           text-transform: uppercase;
           color: #d4dd29;
           background: none;
+          cursor: pointer;
         }
         .link_schedule {
+          cursor: pointer;
           border: none;
           text-decoration: none;
           font-size: 24px;
@@ -30,10 +32,10 @@
           color: white;
           background: none;
         }
-        .line {
-          font-size: 20px;
-          color: white;
-        }
+      }
+      .line {
+        font-size: 20px;
+        color: white;
       }
     }
   }
