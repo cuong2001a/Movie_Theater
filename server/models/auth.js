@@ -18,11 +18,13 @@ const userSchema = new Schema({
   },
   phone: {
     type:String,
-    maxLength:10
+    maxLength:10,
+    required: true,
   },
   name: {
     type: String,
-    maxLength: 50
+    maxLength: 50,
+    required: true,
   },
   address:{
     type: String,
@@ -37,12 +39,16 @@ const userSchema = new Schema({
 // static signup method
 
 userSchema.statics.signup = async function(received) {
-  const {email, password} = received
+  const {email, password,name} = received
   const exists = await this.findOne({ email })
 
   //validation
   if(!email || !password) {
     throw Error('All fields must be filled')
+  }
+
+  if(!name){
+    throw Error('Name is not required')
   }
   
   if (!validator.isEmail(email)){

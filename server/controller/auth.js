@@ -11,11 +11,9 @@ export const loginUser = async (req, res) => {
 
     // create a token
     const accessToken = await jwt.sign(user.email, process.env.ACCESS_TOKEN)
-    console.log('accessToken :', accessToken);
     const refreshToken = await jwt.sign(user.email, process.env.REFRESH_TOKEN)
-    console.log('refreshToken :', refreshToken);
 
-    res.cookie('accessToken', accessToken, { expire: new Date()+ 9999})
+    res.cookie('accessToken', accessToken, { expires: new Date(Date.now()+3000), httpOnly: true})
     res.cookie('refreshToken', refreshToken)
     res.status(200).json({email})
   } catch (error) {
@@ -85,9 +83,7 @@ export const forgotPassword = async(req,res) => {
           from :process.env.MAIL_USERNAME,
           to: data.email,
           subject: "Forgot Password",
-          context:{
-            link: `localhost:3000/reset-password?id=${data._id}&&token=${resetPwToken}`
-          }
+          html: `<p>Click<a href="http://localhost:3000/reset-password?id=${data._id}&&token=${resetPwToken}">here</a><p/>`
         }
         transposter.sendMail(mailOptions, function(err, info){
           if(err){
