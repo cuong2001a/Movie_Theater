@@ -1,29 +1,12 @@
-import { ReactElement } from "react";
 import About from "../features/about/About";
 import Home from "../features/home/Home";
 import Register from "../features/register/Register";
 import Search from "../features/search/Search";
 import SignIn from "../features/signin/SignIn";
 import SystemCinema from "../features/system/SystemCinema";
+import { ItemCategory, ItemRoute, Theater_Item } from "./models";
 
-export interface itemRoute {
-  path: string;
-  element: React.ReactNode;
-}
-
-export interface itemCategory {
-  text: string;
-  path: string;
-  id: number;
-}
-
-export interface Theater_Item {
-  img: string;
-  tilte: string;
-  like: number;
-}
-
-export const listRoute: itemRoute[] = [
+export const LIST_ROUTES: ItemRoute[] = [
   {
     path: "",
     element: <Home />,
@@ -50,7 +33,7 @@ export const listRoute: itemRoute[] = [
   },
 ];
 
-export const listCategory: itemCategory[] = [
+export const LIST_CATEGORIES: ItemCategory[] = [
   {
     text: "Trang chủ",
     path: "/",
@@ -73,7 +56,7 @@ export const listCategory: itemCategory[] = [
   },
 ];
 
-export const listTheater: Theater_Item[] = [
+export const LIST_THREATER: Theater_Item[] = [
   {
     img: "https://www.bhdstar.vn/wp-content/uploads/2021/12/long-khanh-243x330.jpg",
     tilte: "BHD STAR LONG KHÁNH",
@@ -110,20 +93,10 @@ export const listTheater: Theater_Item[] = [
     like: 100,
   },
 ];
-export interface settingSlick {
-  dots: boolean;
-  infinite: boolean;
-  speed: number;
-  slidesToShow: number;
-  slidesToScroll: number;
-  initialSlide: number;
-}
 
-export interface settingSlickMovie {
-  infinite: boolean;
-  speed: number;
-  slidesToShow: number;
-  slidesToScroll: number;
-  nextArrow: ReactElement;
-  prevArrow: ReactElement;
-}
+export const LIST_IMAGES: string[] = [
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/1b8d77de1bf9dea787e8.jpg",
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/kết-TVC_update.png",
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/KV-Artwork-allfooter-1920-1.jpg",
+  "https://www.bhdstar.vn/wp-content/uploads/2018/03/1920x1080-Popcorn.jpg",
+];

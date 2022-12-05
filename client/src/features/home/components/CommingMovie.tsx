@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { settingSlickMovie } from "../../../constant";
+import { SettingSlickMovie } from "../../../constant/models";
 import classes from "../home.module.scss";
 const CommingMovie = () => {
   const [isHover, setIsHover] = useState<Boolean>(false);
-  const setting: settingSlickMovie = {
+  const setting: SettingSlickMovie = {
     infinite: true,
     speed: 500,
     slidesToShow: 4,

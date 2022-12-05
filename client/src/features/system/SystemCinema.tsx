@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Footer from "../../components/footer/Footer";
-import Header from "../../components/header/Header";
 import ListMovie from "./component/ListMovie";
 import ListTheater from "./component/ListTheater";
 import classes from "./movieSchedule.module.scss";
@@ -8,7 +6,6 @@ const SystemCinema: React.FC = () => {
   const [active, setActive] = useState<Number>(1);
   return (
     <React.Fragment>
-      <Header />
       <div className={classes.container}>
         <div className={classes.schedule}>
           <ul className={classes.list_schedule}>
@@ -41,7 +38,6 @@ const SystemCinema: React.FC = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </React.Fragment>
   );
 };

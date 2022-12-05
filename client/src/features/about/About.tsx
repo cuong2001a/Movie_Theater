@@ -1,17 +1,16 @@
 import React from "react";
-import Header from "../../components/header/Header";
-import { listTheater, Theater_Item } from "../../constant";
+import { LIST_THREATER } from "../../constant";
+import { Theater_Item } from "../../constant/models";
 import classes from "./about.module.scss";
 
 const About: React.FC = () => {
   return (
     <React.Fragment>
-      <Header />
       <div className={classes.container}>
         <div className={classes.theater_system}>
           <h3 className={classes.title}>Hệ thống rạp</h3>
           <div className={classes.list_theater}>
-            {listTheater?.map((item: Theater_Item, index) => {
+            {LIST_THREATER?.map((item: Theater_Item, index) => {
               return (
                 <div className={classes.item_theater} key={index}>
                   <img className={classes.img_poster} src={item.img} alt="" />
