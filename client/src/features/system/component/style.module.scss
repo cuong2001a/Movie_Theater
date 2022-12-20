@@ -35,14 +35,15 @@
   }
 }
 .list_theater {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  column-gap: 10px;
-  row-gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
   .item_theater {
-    background-color: #151f28;
+    background-color: #1e2d3a;
     display: inline-block;
-    width: 100%;
+    width: fit-content;
+    padding: 10px;
+    color: white;
     &:hover {
       .btn_location {
         background: #42af33;

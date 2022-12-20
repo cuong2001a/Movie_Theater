@@ -3,6 +3,7 @@
   margin: 0 auto;
   background-image: url("../../assets/images/movie-details-bg.jpg");
   background-position: "cover";
+  min-height: calc(100vh - 310px);
   .schedule {
     margin-bottom: 100px;
     padding: 2rem 16rem 8rem;
