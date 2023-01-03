@@ -25,7 +25,7 @@ export const LIST_THREATER: IItemTheater[] = [
   },
   {
     urlImage:
-      "https://static.boredpanda.com/blog/wp-content/uploads/2016/02/random-photos-turned-into-movie-posters-102__700.jpg",
+      "https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002519?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500",
     address: "a",
     title: "Phim hay 3",
     rate: 2,

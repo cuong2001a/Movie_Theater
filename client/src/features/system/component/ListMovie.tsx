@@ -29,13 +29,11 @@ const ListMovie = () => {
       }}
     >
       {LIST_THREATER.map((threater: IItemTheater) => (
-        <SwiperSlide key={uuidv4()} className="threater_item">
-          <div
-            style={{ backgroundImage: `url(${threater.urlImage})` }}
-            className="threater_item_wrapper"
-          >
-            <h3>{threater.title}</h3>
+        <SwiperSlide key={uuidv4()} className="threater__item">
+          <div className="threater__item-image">
+            <img src={threater.urlImage} alt={threater.title} />
           </div>
+          <span className="threater__item-title">{threater.title}</span>
         </SwiperSlide>
       ))}
     </Swiper>
