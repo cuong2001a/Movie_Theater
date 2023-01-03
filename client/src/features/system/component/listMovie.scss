@@ -1,13 +1,41 @@
 .mySwiper {
-  & .threater_item {
-    background-size: "cover";
-    background-position: "center";
-    background-repeat: "none";
-    background-clip: content-box;
+  padding-bottom: 50px;
+  & .swiper-pagination-bullet {
+    width: 11px;
+    height: 11px;
+    background-color: #979da0;
 
-    &_wrapper {
-      min-height: 300px;
-      width: 100%;
+    &-active {
+      background-color: #307d2e;
+    }
+  }
+
+  & .threater__item {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:hover {
+      border: 1px solid #c3cc26;
+    }
+
+    &-image {
+      background-size: "cover";
+      background-position: "center";
+      background-repeat: "none";
+      background-clip: content-box;
+    }
+
+    &-title {
+      color: white;
+      padding: 1rem;
+      text-transform: uppercase;
+
+      &:hover {
+        color: #c3cc26;
+      }
     }
   }
 }
