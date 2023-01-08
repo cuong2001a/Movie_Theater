@@ -1,0 +1,9 @@
+.container {
+  padding: 0 10rem;
+  color: white;
+  .image {
+    & > img {
+      max-width: 200px;
+    }
+  }
+}
