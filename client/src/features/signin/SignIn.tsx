@@ -8,6 +8,7 @@ import Next from "../register/component/next/Next";
 import Prev from "../register/component/prev/Prev";
 import classes from "./signin.module.scss";
 import { toast, ToastContainer } from "react-toastify";
+import AuthSlider from "../../components/auths/components/slider";
 
 const settings = {
   dots: true,
@@ -53,36 +54,14 @@ const SignIn: React.FC = () => {
                 <Link to={"/register"} className={classes.btn_register}>
                   Đăng kí
                 </Link>
-                <Link to={"/"} className={classes.link}>
+                <Link to={"/forgot-password"} className={classes.link}>
                   Quên mật khẩu ?
                 </Link>
               </div>
             </form>
           </div>
           <div className={classes.right}>
-            <Slider {...settings}>
-              <div className={classes.item}>
-                <img
-                  className={classes.item_img}
-                  src="https://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-ScanQR-710x320.jpg"
-                  alt=""
-                />
-              </div>
-              <div className={classes.item}>
-                <img
-                  className={classes.item_img}
-                  src="https://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-APP-710x320.jpg"
-                  alt=""
-                />
-              </div>
-              <div className={classes.item}>
-                <img
-                  className={classes.item_img}
-                  src="https://www.bhdstar.vn/wp-content/uploads/2017/10/BHD-Star_Hotline_710x320-2.jpg"
-                  alt=""
-                />
-              </div>
-            </Slider>
+            <AuthSlider classes={classes} />
           </div>
         </div>
       </div>

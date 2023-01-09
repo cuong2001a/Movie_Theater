@@ -10,3 +10,7 @@ export type IRegisterForm = {
   rePassword: string;
   phone: string;
 };
+
+export type ForgotPasswordTypes = {
+  email: string;
+};

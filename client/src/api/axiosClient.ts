@@ -3,10 +3,6 @@ import queryString from "query-string";
 import { getRefreshToken, getToken } from "./Cookie";
 
 const refreshToken = getRefreshToken("RefreshToken");
-console.log(
-  "Debug_here process.env.REACT_APP_BASE_URL: ",
-  process.env.REACT_APP_BASE_URL
-);
 
 const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,

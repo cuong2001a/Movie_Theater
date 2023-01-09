@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { IRegisterForm } from "../../models";
 import { AuthApi } from "../../api";
 import { toast } from "react-toastify";
+import AuthSlider from "../../components/auths/components/slider";
 
 const Register: React.FC = () => {
   const settings = {
@@ -117,29 +118,7 @@ const Register: React.FC = () => {
           </form>
         </div>
         <div className={classes.right}>
-          <Slider {...settings}>
-            <div className={classes.item}>
-              <img
-                className={classes.item_img}
-                src="https://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-ScanQR-710x320.jpg"
-                alt=""
-              />
-            </div>
-            <div className={classes.item}>
-              <img
-                className={classes.item_img}
-                src="https://www.bhdstar.vn/wp-content/uploads/2018/03/BHD-Star-APP-710x320.jpg"
-                alt=""
-              />
-            </div>
-            <div className={classes.item}>
-              <img
-                className={classes.item_img}
-                src="https://www.bhdstar.vn/wp-content/uploads/2017/10/BHD-Star_Hotline_710x320-2.jpg"
-                alt=""
-              />
-            </div>
-          </Slider>
+          <AuthSlider classes={classes} />
         </div>
       </div>
     </div>

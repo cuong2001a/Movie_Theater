@@ -1,4 +1,5 @@
 import About from "../features/about/About";
+import ForgotPassword from "../features/forgotPassword/ForgotPassword";
 import Home from "../features/home/Home";
 import Register from "../features/register/Register";
 import Search from "../features/search/Search";
@@ -30,6 +31,14 @@ export const LIST_ROUTES: ItemRoute[] = [
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/reset-password",
+    element: <Register />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
   },
 ];
 
