@@ -82,6 +82,10 @@
           }
         }
       }
+
+      & .error {
+        color: red;
+      }
     }
     .right {
       position: relative;

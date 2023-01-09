@@ -14,3 +14,8 @@ export type IRegisterForm = {
 export type ForgotPasswordTypes = {
   email: string;
 };
+
+export type ResetPasswordTypes = {
+  password: string;
+  id: string | null;
+};

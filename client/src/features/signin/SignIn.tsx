@@ -10,16 +10,6 @@ import classes from "./signin.module.scss";
 import { toast, ToastContainer } from "react-toastify";
 import AuthSlider from "../../components/auths/components/slider";
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  nextArrow: <Next />,
-  prevArrow: <Prev />,
-};
-
 const SignIn: React.FC = () => {
   const { register, handleSubmit } = useForm<AuthFormValues>();
   const onSubmit: SubmitHandler<AuthFormValues> = async values => {

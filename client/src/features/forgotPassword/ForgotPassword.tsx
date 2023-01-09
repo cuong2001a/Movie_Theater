@@ -6,17 +6,33 @@ import { AuthApi } from "../../api";
 import AuthSlider from "../../components/auths/components/slider";
 import { ForgotPasswordTypes } from "../../models";
 import classes from "./forgotPass.module.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 const ForgotPassword: React.FC = () => {
-  const { register, handleSubmit } = useForm<ForgotPasswordTypes>();
+  const schema = yup.object().shape({
+    email: yup
+      .string()
+      .required("Required")
+      .email("Không đúng định dạng email"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ForgotPasswordTypes>({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
+
   const onSubmit: SubmitHandler<ForgotPasswordTypes> = async values => {
     try {
-      const res = await AuthApi.forgotPassword(values);
-      console.log("Debug_here res: ", res);
-      toast.success("Send request successfully");
+      await AuthApi.forgotPassword(values);
+      toast.success("Gửi yêu cầu thành công");
     } catch (error: any) {
       const errorDetail = error?.response?.data;
-      toast.error(errorDetail?.error || "Send request failed");
+      toast.error(errorDetail?.message || "Có lỗi xảy ra, vui lòng thử lại!");
     }
   };
 
@@ -31,6 +47,9 @@ const ForgotPassword: React.FC = () => {
                 <label className={classes.label}>Email :</label>
                 <input {...register("email")} />
               </div>
+              {errors.email && (
+                <p className={classes.error}>{errors.email.message}</p>
+              )}
               <div className={classes.btn}>
                 <button className={classes.btn_submit} type="submit">
                   Gửi yêu cầu
@@ -38,7 +57,7 @@ const ForgotPassword: React.FC = () => {
                 <Link to={"/signin"} className={classes.link}>
                   Đăng nhập
                 </Link>
-                <Link to={"/signup"} className={classes.link}>
+                <Link to={"/register"} className={classes.link}>
                   Đăng ký
                 </Link>
               </div>

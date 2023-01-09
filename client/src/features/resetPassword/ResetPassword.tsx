@@ -1,15 +1,31 @@
 import { useFormik } from "formik";
-import React from "react";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import YupPassword from "yup-password";
-import { AuthApi } from "../../api";
 import AuthSlider from "../../components/auths/components/slider";
-import { IRegisterForm } from "../../models";
-import classes from "./register.module.scss";
+import classes from "./reset.module.scss";
+import queryString from "query-string";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthApi } from "../../api";
+import { toast } from "react-toastify";
 YupPassword(yup); // extend yup
 
-const Register: React.FC = () => {
+const ResetPassword: React.FC = () => {
+  const router = useLocation();
+  const navigate = useNavigate();
+
+  const [params] = useState(() => {
+    const paramsInfo = queryString.parse(router?.search) || {};
+
+    return paramsInfo;
+  });
+
+  useEffect(() => {
+    if (!params?.id) {
+      navigate("/signin");
+    }
+  }, [params]);
+
   const validationSchema = yup.object().shape({
     password: yup
       .string()
@@ -21,13 +37,16 @@ const Register: React.FC = () => {
     rePassword: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match"),
-    email: yup.string().email("Không đúng định dạng email"),
-    phone: yup.string().required("Không bỏ qua sdt"),
   });
 
-  const handleSubmitForm = async (values: IRegisterForm) => {
+  const handleSubmitForm = async (values: any) => {
+    const formValues = {
+      password: values.password,
+      id: params.id,
+    };
     try {
-      await AuthApi.register(values);
+      const res = await AuthApi.resetPassword(formValues as any);
+      console.log("Debug_here res: ", res);
       toast.success("Signup successfully");
     } catch (error: any) {
       toast.error(error?.error || "Signup failed");
@@ -36,11 +55,8 @@ const Register: React.FC = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
       password: "",
       rePassword: "",
-      phone: "",
     },
     onSubmit: handleSubmitForm,
     validationSchema,
@@ -53,33 +69,6 @@ const Register: React.FC = () => {
         <div className={classes.left}>
           <h3 className={classes.title}>Thông tin đăng kí</h3>
           <form onSubmit={formik.handleSubmit}>
-            <div className={classes.item_input}>
-              <label htmlFor="name" className={classes.label}>
-                Họ và tên :
-              </label>
-              <input
-                id="name"
-                type="text"
-                name="name"
-                onChange={formik.handleChange}
-                value={formik.values.name}
-              />
-            </div>
-            <div className={classes.item_input}>
-              <label htmlFor="email" className={classes.label}>
-                Email :
-              </label>
-              <input
-                id="email"
-                type="text"
-                name="email"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-            </div>
-            {formik?.errors?.email && (
-              <p className={classes.error}>{formik.errors.email}</p>
-            )}
             <div className={classes.item_input}>
               <label htmlFor="password" className={classes.label}>
                 Mật khẩu :
@@ -110,21 +99,9 @@ const Register: React.FC = () => {
             {formik?.errors?.rePassword && (
               <p className={classes.error}>{formik.errors.rePassword}</p>
             )}
-            <div className={classes.item_input}>
-              <label htmlFor="phone" className={classes.label}>
-                Số điện thoại :
-              </label>
-              <input
-                id="phone"
-                type="text"
-                name="phone"
-                onChange={formik.handleChange}
-                value={formik.values.phone}
-              />
-            </div>
             <div className={classes.btn}>
               <button type="submit" className={classes.btn_register}>
-                Đăng kí thành viên
+                Reset password
               </button>
             </div>
           </form>
@@ -137,4 +114,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default ResetPassword;

@@ -2,6 +2,7 @@ import About from "../features/about/About";
 import ForgotPassword from "../features/forgotPassword/ForgotPassword";
 import Home from "../features/home/Home";
 import Register from "../features/register/Register";
+import ResetPassword from "../features/resetPassword/ResetPassword";
 import Search from "../features/search/Search";
 import SignIn from "../features/signin/SignIn";
 import SystemCinema from "../features/system/SystemCinema";
@@ -34,7 +35,7 @@ export const LIST_ROUTES: ItemRoute[] = [
   },
   {
     path: "/reset-password",
-    element: <Register />,
+    element: <ResetPassword />,
   },
   {
     path: "/forgot-password",
