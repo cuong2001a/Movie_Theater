@@ -6,7 +6,8 @@
   min-height: calc(100vh - 310px);
   .schedule {
     margin-bottom: 100px;
-    padding: 2rem 16rem 8rem;
+    padding: 2rem 22rem 8rem;
+
     .list_schedule {
       list-style-type: none;
       display: flex;
@@ -38,6 +39,19 @@
         font-size: 20px;
         color: white;
       }
+    }
+
+    .render {
+      .borderBottom {
+        height: 2px;
+        margin: 0 4rem;
+        background-color: #42af33;
+      }
+    }
+
+    .movieDetails {
+      margin-top: 2rem;
+      scroll-behavior: "smooth";
     }
   }
 }

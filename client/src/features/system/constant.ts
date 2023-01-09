@@ -63,4 +63,20 @@ export const LIST_THREATER: IItemTheater[] = [
     rate: 2,
     description: "Phim hay vãi nồi",
   },
+  {
+    urlImage:
+      "https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002484?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500",
+    address: "a",
+    title: "Oh la la",
+    rate: 3,
+    description: "Phim hay quá, quá hay luôn!!!",
+  },
+  {
+    urlImage:
+      "https://booking.bhdstar.vn/CDN/media/entity/get/FilmPosterGraphic/HO00002484?referenceScheme=HeadOffice&allowPlaceHolder=true&height=500",
+    address: "a",
+    title: "Make sense",
+    rate: 3,
+    description: "Phim đỉnh cao",
+  },
 ];
