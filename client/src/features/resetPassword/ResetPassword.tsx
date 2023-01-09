@@ -16,7 +16,6 @@ const ResetPassword: React.FC = () => {
 
   const [params] = useState(() => {
     const paramsInfo = queryString.parse(router?.search) || {};
-
     return paramsInfo;
   });
 
@@ -41,15 +40,17 @@ const ResetPassword: React.FC = () => {
 
   const handleSubmitForm = async (values: any) => {
     const formValues = {
-      password: values.password,
+      resetPassword: values.password,
       id: params.id,
     };
     try {
       const res = await AuthApi.resetPassword(formValues as any);
-      console.log("Debug_here res: ", res);
-      toast.success("Signup successfully");
+      toast.success("Cập nhật thông tin thành công!");
+      navigate("/signin");
     } catch (error: any) {
-      toast.error(error?.error || "Signup failed");
+      toast.error(
+        error?.error || "Cập nhật thông tin thất bại, vui lòng thử lại!!!"
+      );
     }
   };
 

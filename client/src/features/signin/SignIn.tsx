@@ -1,21 +1,28 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
-import { AuthApi } from "../../api";
-import { AuthFormValues } from "../../models";
-import Next from "../register/component/next/Next";
-import Prev from "../register/component/prev/Prev";
-import classes from "./signin.module.scss";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { AuthApi } from "../../api";
+import { setToken } from "../../api/Cookie";
 import AuthSlider from "../../components/auths/components/slider";
+import { AuthFormValues } from "../../models";
+import classes from "./signin.module.scss";
 
 const SignIn: React.FC = () => {
   const { register, handleSubmit } = useForm<AuthFormValues>();
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<AuthFormValues> = async values => {
     try {
-      await AuthApi.login(values);
-      toast.success("Login successfully");
+      const { data, status } = await AuthApi.login(values);
+      console.log("Debug_here data: ", data);
+      if (status === 200 && data?.accessToken) {
+        setToken(data.accessToken);
+        navigate("/system-cinema");
+        toast.success("Login successfully");
+      } else {
+        toast.error("Có lỗi xảy ra, vui lòng thử lại!!");
+      }
     } catch (error: any) {
       const errorDetail = error?.response?.data;
       toast.error(errorDetail?.error || "Login failed");

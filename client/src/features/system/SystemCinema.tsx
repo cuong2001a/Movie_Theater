@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import ListMovie from "./component/ListMovie";
 import ListTheater from "./component/ListTheater";
 import classes from "./movieSchedule.module.scss";
+import { getToken } from "../../api/Cookie";
+
 const SystemCinema: React.FC = () => {
   const [active, setActive] = useState<number>(1);
+  const cookie = getToken();
 
   return (
     <React.Fragment>
