@@ -69,7 +69,8 @@ export const forgotPassword = async (req, res) => {
   User.findOne({email: email}).then((data) => {
     console.log("data :", data)
     if (!data) {
-      res.status(200).json({
+      res.status(400).json({
+        status: 400,
         message: "Email not found",
       })
     } else {
