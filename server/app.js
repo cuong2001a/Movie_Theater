@@ -12,8 +12,8 @@ dotenv.config()
 app.use(express.json())
 app.use(cors({credentials: "same origin"}))
 app.use("/api", authRoutes)
-// app.use("/api", categoryCity)
-// app.use("/api", theater)
+app.use("/api", categoryCity)
+app.use("/api", theater)
 // app.use('/api',userRoutes)
 
 // connection
