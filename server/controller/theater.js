@@ -16,7 +16,7 @@ export const createTheater = (req, res) => {
 }
 
 export const listTheater = (req, res) => {
-  Theater.find({name: body.name}, {name: 1})
+  Theater.find()
     .populate("typeCate")
     .exec((err, data) => {
       if (err) {

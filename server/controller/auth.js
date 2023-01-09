@@ -11,12 +11,20 @@ export const loginUser = async (req, res) => {
     const user = await User.login(email, password)
 
     // create a token
-    const accessToken = await jwt.sign(user.email, process.env.ACCESS_TOKEN)
-    const refreshToken = await jwt.sign(user.email, process.env.REFRESH_TOKEN)
+    const accessToken = await jwt.sign(user.toJSON(), process.env.ACCESS_TOKEN)
+    const refreshToken = await jwt.sign(user.toJSON(), process.env.REFRESH_TOKEN)
 
     res.cookie("accessToken", accessToken, {expires: new Date(Date.now() + 3000), httpOnly: true})
     res.cookie("refreshToken", refreshToken)
-    res.status(200).json({email})
+    res.status(200).json({
+      accessToken: accessToken,
+      user: {
+        email: user.email,
+        birthday: user.birthday,
+        address: user.address,
+        name: user.name,
+      },
+    })
   } catch (error) {
     res.status(400).json({error: error.message})
   }
@@ -118,12 +126,14 @@ export const resetFwPassword = async (req, res) => {
 
 export const requireSignIn = expressJwt({
   secret: "jwtsecret",
-  algorithms: ["sha1", "RS256", "HS256"],
+  algorithms: ["HS256"],
   userProperty: "auth",
 })
 
 export const isAuth = (req, res, next) => {
+  console.log("req :", req)
   let user = req.profile && req.auth && req.profile._id == req.auth._id
+  console.log("user :", user)
   if (!user) {
     return res.status(403).json({
       error: "Access Denied",

@@ -47,6 +47,7 @@ const userSchema = new Schema(
 userSchema.statics.signup = async function (received) {
   const {email, password, name} = received
   const exists = await this.findOne({email})
+  console.log("validator.isStrongPassword(password) :", validator.isStrongPassword(password))
 
   //validation
   if (!email || !password) {

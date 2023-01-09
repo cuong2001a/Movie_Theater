@@ -5,14 +5,15 @@ import cors from "cors"
 
 const authRoutes = require("./routes/auth")
 const categoryCity = require("./routes/categoryCity")
-// const userRoutes = require('./routes/user');
+const theater = require("./routes/theater")
 const app = express()
 dotenv.config()
 
 app.use(express.json())
 app.use(cors({credentials: "same origin"}))
 app.use("/api", authRoutes)
-app.use("/api", categoryCity)
+// app.use("/api", categoryCity)
+// app.use("/api", theater)
 // app.use('/api',userRoutes)
 
 // connection
