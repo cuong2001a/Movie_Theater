@@ -108,7 +108,8 @@ export const forgotPassword = async (req, res) => {
 
 export const resetFwPassword = async (req, res) => {
   try {
-    const data = await User.findById(req.params.id)
+    const data = await User.findById(req.body.id)
+    console.log("data :", data)
     const resetPassword = req.body.resetPassword
     if (!data) {
       return res.status(400).json({message: "da het han token. Vui long thuc hien lai :))"})
@@ -116,6 +117,10 @@ export const resetFwPassword = async (req, res) => {
       const salt = await bcrypt.genSalt(10)
       const hash = await bcrypt.hash(resetPassword, salt)
       const result = await User.updateOne({email: data.email}, {password: hash})
+      return res.status(200).json({
+        status: "success",
+        message: "Cap nhat thong tin thanh cong",
+      })
     }
   } catch (error) {
     console.log("error :", error)
@@ -132,7 +137,6 @@ export const requireSignIn = expressJwt({
 })
 
 export const isAuth = (req, res, next) => {
-  console.log("req :", req)
   let user = req.profile && req.auth && req.profile._id == req.auth._id
   console.log("user :", user)
   if (!user) {
@@ -144,6 +148,7 @@ export const isAuth = (req, res, next) => {
 }
 
 export const isAdmin = (req, res, next) => {
+  console.log("req :", req)
   if (req.profile.role == 0) {
     return res.status(403).json({
       error: "Admin resource , Access denined",
