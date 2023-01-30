@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
@@ -10,6 +10,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const ForgotPassword: React.FC = () => {
+  const [counter, setCounter] = useState(0);
+  const intervalRef = useRef<any>(null);
+
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -26,10 +29,25 @@ const ForgotPassword: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
+  useEffect(() => {
+    if (counter === 60) {
+      intervalRef.current = setInterval(() => {
+        setCounter(prev => prev - 1);
+      }, 1000);
+    }
+
+    return () => {
+      if (counter === 1) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [counter]);
+
   const onSubmit: SubmitHandler<ForgotPasswordTypes> = async values => {
     try {
+      setCounter(60);
       await AuthApi.forgotPassword(values);
-      toast.success("Gửi yêu cầu thành công");
+      toast.success("Gửi yêu cầu thành công, vui lòng check email.");
     } catch (error: any) {
       const errorDetail = error?.response?.data;
       toast.error(errorDetail?.message || "Có lỗi xảy ra, vui lòng thử lại!");
@@ -51,15 +69,18 @@ const ForgotPassword: React.FC = () => {
                 <p className={classes.error}>{errors.email.message}</p>
               )}
               <div className={classes.btn}>
-                <button className={classes.btn_submit} type="submit">
+                <button
+                  disabled={counter !== 0}
+                  className={classes.btn_submit}
+                  type="submit"
+                >
                   Gửi yêu cầu
                 </button>
-                <Link to={"/signin"} className={classes.link}>
-                  Đăng nhập
-                </Link>
-                <Link to={"/register"} className={classes.link}>
-                  Đăng ký
-                </Link>
+                {counter !== 0 && <span>Gửi lại sau {counter}s</span>}
+              </div>
+              <div className={classes.link}>
+                <Link to={"/signin"}>Đăng nhập</Link>
+                <Link to={"/register"}>Đăng ký</Link>
               </div>
             </form>
           </div>

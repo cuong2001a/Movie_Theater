@@ -48,7 +48,14 @@
       }
       .btn {
         text-align: center;
-        .btn_submit {
+        color: #aaa;
+
+        span {
+          margin-left: 10px;
+        }
+
+        .btn_submit,
+        .btn_resend {
           background-color: rgb(39, 223, 45);
           font-size: 16px;
           color: white;
@@ -59,6 +66,13 @@
           &:hover {
             background-color: rgb(35, 186, 40);
           }
+          &:disabled {
+            background-color: #aaa;
+            pointer-events: "none";
+          }
+        }
+        .btn_resend {
+          margin-left: 10px;
         }
         .btn_register {
           background-color: rgb(57, 110, 233);
@@ -73,13 +87,19 @@
             background-color: rgb(37, 88, 154);
           }
         }
-        .link {
-          margin-inline-start: 30px;
+      }
+      .link {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 16px;
+        a {
           text-decoration: none;
           color: rgb(166, 178, 201);
           &:hover {
             color: rgb(39, 223, 45);
           }
+          margin-right: 10px;
         }
       }
 
