@@ -39,9 +39,9 @@ export const signUpUser = async (req, res) => {
   } catch (error) {
     res.status(400).json({error: error.message})
   }
-  res.json({
-    message: "signup user",
-  })
+  // res.json({
+  //   message: "signup user",
+  // })
 }
 
 export const logout = (req, res) => {

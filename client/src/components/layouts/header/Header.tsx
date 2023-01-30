@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     setActiveMenu(pathname);
-  }, []);
+  }, [pathname]);
 
   return (
     <React.Fragment>
