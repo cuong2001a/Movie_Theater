@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import classes from "./detailMovie.module.scss";
 import Grid from "@mui/material/Grid";
 
@@ -6,9 +6,16 @@ interface DetailTheater {
   name: String;
   content: String;
 }
+interface DetailTheaterProps {
+  onSelected: any;
+  onClickLocationItem: any;
+}
 
 type Key = Number | null;
-const DetailTheater: React.FC = () => {
+const DetailTheater = ({
+  onSelected,
+  onClickLocationItem,
+}: DetailTheaterProps) => {
   const [active, setActive] = useState<Number | null>(null);
   const listTheater = [
     {
@@ -29,15 +36,25 @@ const DetailTheater: React.FC = () => {
     },
   ];
 
+  const handleActive = useCallback((index: Key) => {
+    setActive(index);
+    onClickLocationItem();
+    onSelected(index);
+  }, []);
+
   return (
     <React.Fragment>
-      <Grid style={{ marginTop: "30px" }} container spacing={2}>
+      <Grid
+        style={{ marginTop: "30px", marginBottom: "30px" }}
+        container
+        spacing={2}
+      >
         {listTheater?.map((item: DetailTheater, index: Key) => {
           return (
             <Grid item xs={3} md={3}>
               <div
                 className={active === index ? classes.box_active : classes.box}
-                onClick={() => setActive(index)}
+                onClick={() => handleActive(index)}
               >
                 <div className={classes.body}>
                   <p className={classes.title}>{item?.name}</p>
@@ -60,5 +77,4 @@ const DetailTheater: React.FC = () => {
     </React.Fragment>
   );
 };
-DetailTheater.propTypes = {};
 export default DetailTheater;
