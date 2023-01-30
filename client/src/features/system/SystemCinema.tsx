@@ -1,11 +1,15 @@
 import React, { useCallback, useRef, useState } from "react";
 import ListMovie from "./component/ListMovie";
 import ListTheater from "./component/ListTheater";
+import LocationDetail from "./component/LocationDetail";
 import MovieDetails from "./component/MovieDetails";
 import classes from "./movieSchedule.module.scss";
 const SystemCinema: React.FC = () => {
   const [active, setActive] = useState<number>(1);
   const [movieSelected, setMovieSelected] = useState({});
+  const [locationSelected, setLocationSelected] = useState<
+    number | undefined
+  >();
   const movieDetailRef = useRef<any>(null);
 
   const handleClickMovieItem = useCallback(() => {
@@ -17,6 +21,10 @@ const SystemCinema: React.FC = () => {
 
   const handleSelectMovieDetail = (threater: any) => {
     setMovieSelected(threater);
+  };
+
+  const handleSelectLocationDetail = (location: number) => {
+    setLocationSelected(location);
   };
 
   return (
@@ -53,13 +61,24 @@ const SystemCinema: React.FC = () => {
                 onSelected={handleSelectMovieDetail}
               />
             ) : (
-              <ListTheater />
+              <ListTheater
+                onSelected={handleSelectLocationDetail}
+                onClickLocationItem={handleClickMovieItem}
+              />
             )}
             <div className={classes.borderBottom}></div>
           </div>
           <div ref={movieDetailRef} className={classes.movieDetails}>
-            {Object.keys(movieSelected).length && (
-              <MovieDetails movie={movieSelected} />
+            {active === 1 ? (
+              <>
+                {Object.keys(movieSelected).length && (
+                  <MovieDetails movie={movieSelected} />
+                )}
+              </>
+            ) : (
+              <>
+                <LocationDetail location={locationSelected} />
+              </>
             )}
           </div>
         </div>

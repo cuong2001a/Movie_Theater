@@ -2,7 +2,11 @@ import React from "react";
 import classes from "./style.module.scss";
 import { ImLocation2 } from "react-icons/im";
 import DetailTheater from "./DetailTheater";
-const ListTheater: React.FC = () => {
+interface ListLocationProp {
+  onSelected: any;
+  onClickLocationItem: any;
+}
+const ListTheater = ({ onSelected, onClickLocationItem }: ListLocationProp) => {
   const city = ["Thành phố Hồ Chí Minh", "Hà Nội", "Hải Phòng", "Huế"];
 
   const renderCity = () => {
@@ -20,7 +24,10 @@ const ListTheater: React.FC = () => {
   return (
     <React.Fragment>
       <div className={classes.list_theater}>{renderCity()}</div>
-      <DetailTheater />
+      <DetailTheater
+        onSelected={onSelected}
+        onClickLocationItem={onClickLocationItem}
+      />
     </React.Fragment>
   );
 };
