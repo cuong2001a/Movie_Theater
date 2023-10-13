@@ -2,8 +2,8 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { AuthApi } from "../../api";
-import { AuthFormValues } from "../../models";
+// import { login } from "@src/api/AuthApi";
+import { AuthFormValues } from "@src/type";
 import Next from "../register/component/next/Next";
 import Prev from "../register/component/prev/Prev";
 import classes from "./signin.module.scss";
@@ -23,7 +23,7 @@ const SignIn: React.FC = () => {
   const { register, handleSubmit } = useForm<AuthFormValues>();
   const onSubmit: SubmitHandler<AuthFormValues> = async values => {
     try {
-      await AuthApi.login(values);
+      // await login(values);
       toast.success("Login successfully");
     } catch (error: any) {
       const errorDetail = error?.response?.data;

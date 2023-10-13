@@ -1,13 +1,6 @@
-import axios, { ParamsSerializerOptions } from "axios";
-import queryString from "query-string";
-import { getRefreshToken, getToken } from "./Cookie";
+import axios from "axios";
 
-const refreshToken = getRefreshToken("RefreshToken");
-console.log(
-  "Debug_here process.env.REACT_APP_BASE_URL: ",
-  process.env.REACT_APP_BASE_URL
-);
-
+// const refreshToken = getRefreshToken("RefreshToken");
 const axiosClient = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
@@ -23,12 +16,12 @@ const axiosClient = axios.create({
 
 // Interceptors
 axiosClient.interceptors.request.use(function (config) {
-  config.headers = {
-    "Content-Type": "application/json",
-    Authorization: getToken("Auth-Token")
-      ? `Bearer ${getToken("Auth-Token")}`
-      : undefined,
-  };
+  // config.headers = {
+  //   "Content-Type": "application/json",
+  //   Authorization: getToken("Auth-Token")
+  //     ? `Bearer ${getToken("Auth-Token")}`
+  //     : undefined,
+  // };
   return config;
 });
 

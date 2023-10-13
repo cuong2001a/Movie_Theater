@@ -4,7 +4,7 @@ import Next from "./component/next/Next";
 import Prev from "./component/prev/Prev";
 import classes from "./register.module.scss";
 import { useFormik } from "formik";
-import { IRegisterForm } from "../../models";
+import { IRegisterForm } from "@src/type";
 import { AuthApi } from "../../api";
 import { toast } from "react-toastify";
 
